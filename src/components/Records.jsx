@@ -3,7 +3,7 @@ import { getAllAssistance, setForm, togleForm } from "../redux/assistance/thunks
 import assistanceApi from "../api/assistanceApi";
 
 export function Records() {
-  const { assistants, isForm } = useSelector((state) => state.assistance);
+  const { assistants = [], isForm } = useSelector((state) => state.assistance);
 
   const dispatch = useDispatch();
 
