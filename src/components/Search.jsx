@@ -24,17 +24,21 @@ export const Search = () => {
       return { ...state, search: value };
     });
 
-    console.log({ [fields.option]: fields.search });
 
     dispatch(getAllAssistance({ [fields.option]: fields.search }));
   };
 
+  const filterAssistance = () => {
+    console.log({ [fields.option]: fields.search });
+
+    dispatch(getAllAssistance({ [fields.option]: fields.search }));
+  }
+
   return (
-    <>
-    <div className="col-2">
-        <h5>BUSCAR POR</h5>
-    </div>
-    <div className="col-2">
+    <div className="col-4">
+      <div className="row m-1">
+
+        <div className="col-3">
           <select
             className="form-select"
             name="option"
@@ -47,19 +51,23 @@ export const Search = () => {
             <option value="email">Correo electrónico</option>
             <option value="id_number">Numero de identificación</option>
           </select>
-    </div>
-    <div className="col-2">
-        <input
-          onChange={fieldHandler}
-          type="text"
-          value={fields?.search}
-          className="form-control"
-          placeholder="Busque aqui por nombres, apellidos o identificación"
-          name="search"
-        />
+        </div>
+
+        <div className="col-6">
+          <input
+            onChange={fieldHandler}
+            type="text"
+            value={fields?.search}
+            className="form-control"
+            placeholder="Busque aqui por nombres, apellidos o identificación"
+            name="search"
+          />
+        </div>
+
+        <div className="col-1">
+          <button className="btn btn-md btn-success" onClick={filterAssistance}>FILTRAR</button>
+        </div>
       </div>
-    </>
-      
-    
+    </div>
   );
 };

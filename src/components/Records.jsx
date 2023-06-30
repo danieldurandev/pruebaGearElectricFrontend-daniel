@@ -28,14 +28,14 @@ export function Records() {
     <>
       {assistants.map((assistant) => (
         <tr key={assistant.id}>
-          <td className="text-center">{assistant.names}</td>
-          <td className="text-center">{assistant.last_names}</td>
-          <td className="text-center">{assistant.email}</td>
-          <td className="text-center">{assistant.mobile_phone}</td>
-          <td className="text-center">{assistant.type_of_document}</td>
-          <td className="text-center">{assistant.id_number}</td>
-          <td className="text-center">{assistant.is_active ? "SI" : "NO"}</td>
-          <td className="text-center">
+          <td>{assistant.names}</td>
+          <td>{assistant.last_names}</td>
+          <td>{assistant.email}</td>
+          <td>{assistant.mobile_phone}</td>
+          <td>{assistant.type_of_document}</td>
+          <td>{assistant.id_number}</td>
+          <td>{assistant.is_active ? "SI" : "NO"}</td>
+          <td>
             <button
               className="btn btn-sm btn-primary"
               name="edit"

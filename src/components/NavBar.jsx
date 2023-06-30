@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setForm, togleForm } from "../redux/assistance/thunks";
+import { getAllAssistance, setForm, togleForm } from "../redux/assistance/thunks";
 import { Search } from "./Search";
 
 const fieldObject = {
@@ -14,23 +14,34 @@ const fieldObject = {
 export const NavBar = () => {
   const dispatch = useDispatch();
 
-  const { total } = useSelector((state) => state.assistance);
+  const { total, isForm } = useSelector((state) => state.assistance);
+
 
   const click = () => {
     dispatch(setForm({ fieldObject, option: "add", button: "AÑADIR" }));
     dispatch(togleForm());
   };
 
+  const getAllRegister = () => {
+    dispatch(getAllAssistance({}));
+  };
+
   return (
-    <div className="row m-1 d-flex align-items-center">
-      <div className="col-1">
-        <button className="btn btn-sm btn-primary" onClick={click}>
-          AÑADIR
+    <div className="row m-1 p-1 align-items-center">
+      <div className="col-4">
+        <button className={`btn btn-md btn-${isForm ? "danger" : "primary"}`} onClick={click}>
+          {!isForm ? "AÑADIR NUEVO" : "CERRAR"}
+        </button>
+        <button className="btn btn-md btn-primary" onClick={getAllRegister}>
+          TODOS LOS REGISTROS
         </button>
       </div>
 
-        <Search/>
-      <h3>Asistencia total al evento {total}</h3>
+      <Search />
+
+      <div className="col-4">
+        <h2>ASISTENCIA TOTAL: {total}</h2>
+      </div>
     </div>
   );
 };

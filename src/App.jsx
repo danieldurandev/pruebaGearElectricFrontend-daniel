@@ -18,7 +18,7 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid text-center">
       <NavBar/>
       {isForm && <Form button="AÑADIR" />}      
       <Table>
