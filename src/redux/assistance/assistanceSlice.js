@@ -26,9 +26,12 @@ export const assistanceSlice = createSlice({
         },
         showForm: (state, action) => {
             state.isForm = !state.isForm
+        },
+        setLoading: (state, action)=>{
+            state.isLoading = true;
         }
         
     }
 })
 
-export const {setAssistance, showForm, setAssistant} = assistanceSlice.actions
+export const {setAssistance, showForm, setAssistant, setLoading} = assistanceSlice.actions

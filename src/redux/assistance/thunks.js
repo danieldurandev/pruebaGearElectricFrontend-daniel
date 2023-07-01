@@ -1,9 +1,10 @@
 import assistanceApi from "../../api/assistanceApi";
-import { setAssistance, setAssistant, showForm } from "./assistanceSlice";
+import { setAssistance, setAssistant, setLoading, showForm } from "./assistanceSlice";
 
 export const getAllAssistance = ({names = "", last_names = "", email  = "", id_number = ""}) => {
     return async (dispatch)=>{
         const {data} = await assistanceApi.get(`?names=${names}&last_names=${last_names}&email=${email}&id_number=${id_number}`)
+        dispatch(setLoading())
         dispatch(setAssistance(data))
     }
 }
